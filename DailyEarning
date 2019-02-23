@@ -1,0 +1,21 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DailyEarnings
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int days = int.Parse(Console.ReadLine());
+            double moneyPerDay = double.Parse(Console.ReadLine());
+            double exchenge = double.Parse(Console.ReadLine());
+            double yearProfitInBGN = (days * 12)*(moneyPerDay*exchenge);
+            double profitPerDay = (((days * moneyPerDay * exchenge * 2.5) + yearProfitInBGN) * 0.75) / 365;
+            Console.WriteLine("{0:f2}",profitPerDay);
+        }
+    }
+}
