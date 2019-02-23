@@ -1,0 +1,41 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TranportPrice
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int Km = int.Parse(Console.ReadLine());
+            string timeOfDay = Console.ReadLine();
+            double price = 0;
+            if (Km>=100)
+            {
+                price = Km * 0.06;
+                Console.WriteLine(price);                
+            }
+            else if (Km>=20&&Km<100)
+            {
+                price = Km * 0.09;
+                Console.WriteLine(price);
+            }
+            else
+            {
+                if (timeOfDay=="day")
+                {
+                    price = Km * 0.79 + 0.7;
+                    Console.WriteLine(price);
+                }
+                else if (timeOfDay=="night")
+                {
+                    price = Km * 0.9 + 0.7;
+                    Console.WriteLine(price);
+                }
+            }
+        }
+    }
+}
