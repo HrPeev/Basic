@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BathConstruction
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int landinArea = int.Parse(Console.ReadLine());
+            double tileWidth = double.Parse(Console.ReadLine());
+            double tileHeight = double.Parse(Console.ReadLine());
+            int benchWidth = int.Parse(Console.ReadLine());
+            int benchHeight = int.Parse(Console.ReadLine());
+            double tilesNeed = ((landinArea * landinArea) - (benchHeight * benchWidth)) / (tileHeight * tileWidth);
+            double timeNeed = tilesNeed * 0.2;
+            Console.WriteLine(tilesNeed);
+            Console.WriteLine(timeNeed);
+
+
+
+        }
+    }
+}
