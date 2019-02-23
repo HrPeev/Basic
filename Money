@@ -1,0 +1,22 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Money
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double bitcoins = double.Parse(Console.ReadLine())*1168;
+            double yoan = double.Parse(Console.ReadLine()) * 0.15;
+            double commision = double.Parse(Console.ReadLine());
+            yoan = (yoan * 1.76)/1.95;
+            bitcoins = bitcoins / 1.95;
+            double moneyInLv = (bitcoins + yoan) * ((100-commision)/100);
+            Console.WriteLine(moneyInLv);
+        }
+    }
+}
