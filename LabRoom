@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LabBasicAll
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double with = double.Parse(Console.ReadLine())*100;
+            double height = double.Parse(Console.ReadLine())*100;
+            int placeWith = (int)with / 120;
+            int placeHeight = (int)(height - 100) / 70;
+            int allPlacess = (placeHeight * placeWith) - 3;
+            Console.WriteLine(allPlacess);
+           
+            
+            
+            
+
+
+        }
+    }
+}
