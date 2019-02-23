@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PipesInPool
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int poolLimit = int.Parse(Console.ReadLine());
+            int firstPipeLiters = int.Parse(Console.ReadLine());
+            int secondPipeLiters = int.Parse(Console.ReadLine());
+            double hours = double.Parse(Console.ReadLine());
+            double fuling = (firstPipeLiters * hours) + (secondPipeLiters * hours);
+            double pipeOnePrecentage = 0;
+            double pipeTwoPrecentage = 0;
+            if (fuling>poolLimit)
+            {
+                Console.WriteLine("For {0} hours the pool overflows with {1} liters.",hours,fuling-poolLimit);
+            }
+            else
+            {
+                pipeOnePrecentage = ((firstPipeLiters * hours) / fuling) * 100;
+                pipeTwoPrecentage=((secondPipeLiters*hours)/fuling)*100;
+                fuling = (fuling/poolLimit) * 100; 
+                
+                Console.WriteLine("The pool is {0}% full. Pipe 1: {1}%. Pipe 2: {2}%.",
+                    Math.Truncate(fuling),
+                    Math.Truncate(pipeOnePrecentage),
+                    Math.Truncate(pipeTwoPrecentage));
+            }
+        }
+    }
+}
