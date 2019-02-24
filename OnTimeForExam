@@ -1,0 +1,64 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace OnTimeForTheExam
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int hourOnExam = int.Parse(Console.ReadLine())*60;
+            int minutesOnExam = int.Parse(Console.ReadLine());
+            int hourArived = int.Parse(Console.ReadLine())*60;
+            int minutesArived = int.Parse(Console.ReadLine());
+            int timeOnExam = hourOnExam + minutesOnExam;
+            int timeArived = hourArived + minutesArived;
+            if (timeOnExam>=timeArived)
+            {
+                if (timeOnExam-timeArived>=60)
+                {
+                    Console.WriteLine("Early");
+                    Console.WriteLine("{0}:{1:d2} hours before the start",
+                        (timeOnExam - timeArived)/60,
+                        (timeOnExam - timeArived) % 60);
+                }
+                else if (timeOnExam - timeArived >30 && timeOnExam - timeArived < 60)
+                {
+                    Console.WriteLine("Early");
+                    Console.WriteLine("{0} minutes before the start",timeOnExam-timeArived);
+                }
+                else if (timeOnExam - timeArived <= 30 && timeOnExam - timeArived !=0)
+                {
+                    Console.WriteLine("On time");
+                    Console.WriteLine("{0} minutes before the start", timeOnExam - timeArived);
+                }
+                else
+                {
+                    Console.WriteLine("On time");
+                }            
+            }
+
+            else
+            {
+                if (timeArived-timeOnExam >= 60)
+                {
+                    Console.WriteLine("Late");
+                    Console.WriteLine("{0}:{1:d2} hours after the start",
+                        (timeArived - timeOnExam) / 60,
+                        (timeArived - timeOnExam) % 60);
+                }
+                else 
+                {
+                    Console.WriteLine("Late");
+                    Console.WriteLine("{0} minutes after the start",
+                        timeArived-timeOnExam);
+                }
+            }
+
+
+        }
+    }
+}
