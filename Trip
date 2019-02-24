@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Trip
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double buget = double.Parse(Console.ReadLine());
+            string season = Console.ReadLine();
+            if (buget<=1000 && buget>100)
+            {
+                Console.WriteLine("Somewhere in Balkans");
+                if (season=="winter")
+                {
+                    Console.WriteLine("Hotel - {0:f2}",buget*0.8);
+                }
+                else
+                {
+                    Console.WriteLine("Camp - {0:f2}", buget * 0.4);
+                }
+            }
+            else if (buget<=100)
+            {
+                Console.WriteLine("Somewhere in Bulgaria");
+                if (season == "winter")
+                {
+                    Console.WriteLine("Hotel - {0:f2}", buget * 0.7);
+                }
+                else
+                {
+                    Console.WriteLine("Camp - {0:f2}", buget * 0.3);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Somewhere in Europe");
+                
+                    Console.WriteLine("Hotel - {0:f2}", buget * 0.9);
+                
+            }
+        }
+    }
+}
