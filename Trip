@@ -10,7 +10,7 @@ namespace Trip
     {
         static void Main(string[] args)
         {
-            decimal buget = double.Parse(Console.ReadLine());
+            decimal buget = decimal.Parse(Console.ReadLine());
             string season = Console.ReadLine();
             if (buget<=1000 && buget>100)
             {
