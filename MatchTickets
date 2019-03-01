@@ -1,0 +1,159 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MatchTickets
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double buget = double.Parse(Console.ReadLine());
+            string ticketsCategory = Console.ReadLine();
+            int people = int.Parse(Console.ReadLine());
+            double price = 0;
+            switch (ticketsCategory)
+            {
+                case "VIP":
+                    price = 499.99;
+                    if (people>0&&people<5)
+                    {
+                        buget *= 0.25;
+                        price *= people;
+                        if (buget>=price)
+                        {
+                            Console.WriteLine("Yes! You have {0:f2} leva left.",buget-price); 
+                        }
+                        else
+                        {
+                            Console.WriteLine("Not enough money! You need {0:f2} leva.",price-buget);
+                        }
+                    }
+                    else if (people > 4 && people < 10)
+                    {
+                        buget *= 0.40;
+                        price *= people;
+                        if (buget >= price)
+                        {
+                            Console.WriteLine("Yes! You have {0:f2} leva left.", buget - price);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Not enough money! You need {0:f2} leva.", price - buget);
+                        }
+                    }
+                    else if (people > 9 && people < 25)
+                    {
+                        buget *= 0.50;
+                        price *= people;
+                        if (buget >= price)
+                        {
+                            Console.WriteLine("Yes! You have {0:f2} leva left.", buget - price);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Not enough money! You need {0:f2} leva.", price - buget);
+                        }
+                    }
+                    else if (people > 24 && people < 50)
+                    {
+                        buget *= 0.60;
+                        price *= people;
+                        if (buget >= price)
+                        {
+                            Console.WriteLine("Yes! You have {0:f2} leva left.", buget - price);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Not enough money! You need {0:f2} leva.", price - buget);
+                        }
+                    }
+                    else if (people > 49 && people <=200)
+                    {
+                        buget *= 0.75;
+                        price *= people;
+                        if (buget >= price)
+                        {
+                            Console.WriteLine("Yes! You have {0:f2} leva left.", buget - price);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Not enough money! You need {0:f2} leva.", price - buget);
+                        }
+                    }
+                    break;
+                case "Normal":
+                    price = 249.99;
+                    if (people > 0 && people < 5)
+                    {
+                        buget *= 0.25;
+                        price *= people;
+                        if (buget >= price)
+                        {
+                            Console.WriteLine("Yes! You have {0:f2} leva left.", buget - price);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Not enough money! You need {0:f2} leva.", price - buget);
+                        }
+                    }
+                    else if (people > 4 && people < 10)
+                    {
+                        buget *= 0.40;
+                        price *= people;
+                        if (buget >= price)
+                        {
+                            Console.WriteLine("Yes! You have {0:f2} leva left.", buget - price);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Not enough money! You need {0:f2} leva.", price - buget);
+                        }
+                    }
+                    else if (people > 9 && people < 25)
+                    {
+                        buget *= 0.50;
+                        price *= people;
+                        if (buget >= price)
+                        {
+                            Console.WriteLine("Yes! You have {0:f2} leva left.", buget - price);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Not enough money! You need {0:f2} leva.", price - buget);
+                        }
+                    }
+                    else if (people > 24 && people < 50)
+                    {
+                        buget *= 0.60;
+                        price *= people;
+                        if (buget >= price)
+                        {
+                            Console.WriteLine("Yes! You have {0:f2} leva left.", buget - price);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Not enough money! You need {0:f2} leva.", price - buget);
+                        }
+                    }
+                    else if (people > 49 && people <= 200)
+                    {
+                        buget *= 0.75;
+                        price *= people;
+                        if (buget >= price)
+                        {
+                            Console.WriteLine("Yes! You have {0:f2} leva left.", buget - price);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Not enough money! You need {0:f2} leva.", price - buget);
+                        }
+                    }
+                    break;
+                
+            }
+        }
+    }
+}
