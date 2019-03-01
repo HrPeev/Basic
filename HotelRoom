@@ -1,0 +1,79 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HotelRoom
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string vacantoinTime = Console.ReadLine();
+            int vacantionsDays = int.Parse(Console.ReadLine());
+            double studioCost = 0;
+            double apartmentCost = 0;
+            if (vacantoinTime=="May"||vacantoinTime=="October")
+            {
+                studioCost = 50;
+                apartmentCost = 65;
+                if (vacantionsDays<=14)
+                {
+                    if (vacantionsDays>7)
+                    {
+                        studioCost *= 0.95;
+                        Console.WriteLine("Apartment: {0:f2} lv.",apartmentCost*vacantionsDays);
+                        Console.WriteLine("Studio: {0:f2} lv.",studioCost*vacantionsDays);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Apartment: {0:f2} lv.", apartmentCost * vacantionsDays);
+                        Console.WriteLine("Studio: {0:f2} lv.", studioCost * vacantionsDays);
+                    }
+                }
+                else
+                {
+                    studioCost *= 0.7;
+                    apartmentCost *= 0.9;
+                    Console.WriteLine("Apartment: {0:f2} lv.", apartmentCost * vacantionsDays);
+                    Console.WriteLine("Studio: {0:f2} lv.", studioCost * vacantionsDays);
+                }
+            }
+            else if (vacantoinTime == "June" || vacantoinTime == "Septeber")
+            {
+                studioCost = 75.2;
+                apartmentCost = 68.7;
+                if (vacantionsDays<=14)
+                {
+                    Console.WriteLine("Apartment: {0:f2} lv.", apartmentCost * vacantionsDays);
+                    Console.WriteLine("Studio: {0:f2} lv.", studioCost * vacantionsDays);
+                }
+                else
+                {
+                    studioCost *= 0.8;
+                    apartmentCost *= 0.9;
+                    Console.WriteLine("Apartment: {0:f2} lv.", apartmentCost * vacantionsDays);
+                    Console.WriteLine("Studio: {0:f2} lv.", studioCost * vacantionsDays);
+                }
+            }
+            else if (vacantoinTime == "July" || vacantoinTime == "August")
+            {
+                studioCost = 76;
+                apartmentCost = 77;
+                if (vacantionsDays <= 14)
+                {
+                    Console.WriteLine("Apartment: {0:f2} lv.", apartmentCost * vacantionsDays);
+                    Console.WriteLine("Studio: {0:f2} lv.", studioCost * vacantionsDays);
+                }
+                else
+                {
+                    
+                    apartmentCost *= 0.9;
+                    Console.WriteLine("Apartment: {0:f2} lv.", apartmentCost * vacantionsDays);
+                    Console.WriteLine("Studio: {0:f2} lv.", studioCost * vacantionsDays);
+                }
+            }
+        }
+    }
+}
