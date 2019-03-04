@@ -1,0 +1,50 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Histogram
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int counter = int.Parse(Console.ReadLine());
+            double firstCategory = 0;
+            double secondCategory = 0;
+            double thirdCategory = 0;
+            double fourthCategory = 0;
+            double fifthCategory = 0;
+            for (int i = 0; i < counter; i++)
+            {
+                int number = int.Parse(Console.ReadLine());
+                if (number>=800)
+                {
+                    fifthCategory++;
+                }
+                else if (number>=600&&number<800)
+                {
+                    fourthCategory++;
+                }
+                else if (number>=400&&number<600)
+                {
+                    thirdCategory++;
+                }
+                else if (number>=200&&number<400)
+                {
+                    secondCategory++;
+                }
+                else if (number<200)
+                {
+                    firstCategory++;
+                }
+            }
+            Console.WriteLine("{0:f2}%", (firstCategory / counter) * 100);
+            Console.WriteLine("{0:f2}%", (secondCategory / counter) * 100);
+            Console.WriteLine("{0:f2}%", (thirdCategory / counter) * 100);
+            Console.WriteLine("{0:f2}%", (fourthCategory / counter) * 100);
+            Console.WriteLine("{0:f2}%",(fifthCategory / counter) * 100);
+        }
+    }
+}
