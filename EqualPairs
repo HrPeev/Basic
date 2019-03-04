@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace EqualPairs
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int counter = int.Parse(Console.ReadLine());
+            int sumPairs = 0;
+            int diffPairs = 0;
+            
+            for (int i = 0; i < counter; i++)
+            {
+                int sumTemp = sumPairs;
+                int firstNumber = int.Parse(Console.ReadLine());
+                int secondNumber = int.Parse(Console.ReadLine());                
+                sumPairs = firstNumber + secondNumber;
+                if (sumPairs != sumTemp&&i>0)
+                {
+                    diffPairs = Math.Abs(sumPairs - sumTemp);
+                }
+            }
+            if (diffPairs!=0)
+            {
+                Console.WriteLine("No, maxdiff="+diffPairs);
+            }
+            else
+            {
+                Console.WriteLine("Yes, value="+sumPairs);
+            }
+
+        }
+    }
+}
