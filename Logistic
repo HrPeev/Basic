@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Logistic
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int cargoCounter = int.Parse(Console.ReadLine());
+            double averagePrice = 0;
+            double microbus = 0;
+            double truck = 0;
+            double train = 0;
+            int allCargoTons = 0;
+
+            for (int i = 0; i < cargoCounter; i++)
+            {
+                int curentCargo = int.Parse(Console.ReadLine());
+                allCargoTons += curentCargo;
+                if (curentCargo<=3)
+                {
+                    microbus += curentCargo;
+                }
+                else if (curentCargo>3&&curentCargo<=11)
+                {
+                    truck += curentCargo;
+                }
+                else
+                {
+                    train += curentCargo;
+                }
+
+            }
+            averagePrice = ((microbus * 200.0) + (truck * 175.0) + (train * 120.0))/allCargoTons;
+            microbus=(microbus/allCargoTons)*100;
+            truck = (truck / allCargoTons) * 100;
+            train = (train / allCargoTons) * 100;
+            Console.WriteLine("{0:f2}",averagePrice);
+            Console.WriteLine("{0:f2}%",microbus);
+            Console.WriteLine("{0:f2}%",truck);
+            Console.WriteLine("{0:f2}%",train);
+        }
+    }
+}
