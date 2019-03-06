@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Division
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int countNumbers = int.Parse(Console.ReadLine());
+            double counterDivisionByTwo = 0;
+            double counterDivisionByThree = 0;
+            double counterDivisionByFour = 0;           
+            for (int i = 0; i < countNumbers; i++)
+            {
+                int curentNumber = int.Parse(Console.ReadLine());
+                if (curentNumber%2==0)
+                {
+                    counterDivisionByTwo++;
+                }
+                if (curentNumber%3==0)
+                {
+                    counterDivisionByThree++;
+                }
+                if (curentNumber%4==0)
+                {
+                    counterDivisionByFour++;
+                }
+            }
+            counterDivisionByTwo = (counterDivisionByTwo / countNumbers) * 100;
+            counterDivisionByThree = (counterDivisionByThree / countNumbers) * 100;
+            counterDivisionByFour = (counterDivisionByFour / countNumbers) * 100;
+            Console.WriteLine("{0:f2}%",counterDivisionByTwo);
+            Console.WriteLine("{0:f2}%",counterDivisionByThree);
+            Console.WriteLine("{0:f2}%",counterDivisionByFour);
+            
+
+        }
+    }
+}
