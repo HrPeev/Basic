@@ -1,0 +1,80 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Fort
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int number = int.Parse(Console.ReadLine());
+            if (number%2==0)
+            {
+                for (int row = 0; row <number/2; row++)
+                {
+                  
+                        Console.Write(new string('-',number/2-1-row));
+                        Console.Write("*");
+                        Console.Write(new string('-', row*2));
+                        Console.Write("*");
+                        Console.Write(new string('-', number / 2 - 1-row));
+                        Console.WriteLine();                   
+                }
+                for (int row =1; row <=number/2-1; row++)
+                {
+
+                    Console.Write(new string('-', row));
+                    Console.Write("*");
+                    Console.Write(new string('-', (number-2)-(row*2)));
+                    Console.Write("*");
+                    Console.Write(new string('-', row));
+                    Console.WriteLine();
+                }
+            }
+            else
+            {
+                for (int row = 0; row < number/2+1; row++)
+                {
+                    if (row == 0)
+                    {
+                        Console.Write(new string('-', number / 2 ));
+                        Console.Write("*");                        
+                        Console.Write(new string('-', number / 2));
+                        Console.WriteLine();
+                    }
+                    else
+                    {
+                        Console.Write(new string('-', number / 2 -  row));
+                        Console.Write("*");
+                        Console.Write(new string('-', row*2-1));
+                        Console.Write("*");
+                        Console.Write(new string('-', number / 2  - row));
+                        Console.WriteLine();
+                    }
+                }
+                for (int row = 1; row <= number/2; row++)
+                {
+                    if (row == number / 2 )
+                    {
+                        Console.Write(new string('-', row));
+                        Console.Write("*");                        
+                        Console.Write(new string('-', row));
+                        Console.WriteLine();
+                    }
+                    else
+                    {
+                        Console.Write(new string('-', row));
+                        Console.Write("*");
+                        Console.Write(new string('-', (number - 2) - (row * 2)));
+                        Console.Write("*");
+                        Console.Write(new string('-', row));
+                        Console.WriteLine();
+                    }
+                }
+            }
+        }
+    }
+}
