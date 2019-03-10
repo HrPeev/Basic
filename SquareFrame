@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Fort
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int number = int.Parse(Console.ReadLine());
+            for (int row = 0; row < number; row++)
+            {
+                if (row == 0 || row == number - 1)
+                {
+                    Console.Write("+");
+                }
+                else
+                {
+                    Console.Write("|");
+                }
+                for (int col = 0; col < number-2; col++)
+                {
+                    Console.Write(" -");
+                }
+                if (row == 0 || row == number - 1)
+                {
+                    Console.Write(" +");
+                }
+                else
+                {
+                    Console.Write(" |");
+                }
+                Console.WriteLine();
+            }
+            
+                
+            
+        }
+    }
+}
