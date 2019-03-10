@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Fort
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int number = int.Parse(Console.ReadLine());
+            for (int row = 0; row <=number; row++)
+            {
+                Console.Write(new string(' ',number-row));
+                Console.Write(new string('*',row));                
+                Console.Write(" | ");                
+                Console.Write(new string('*', row));
+                Console.Write(new string(' ', number  - row));
+                Console.WriteLine();
+            }
+
+
+        }
+    }
+}
