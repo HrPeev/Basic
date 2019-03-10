@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Fort
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int number = int.Parse(Console.ReadLine());
+            for (int row = 1; row <=number; row++)
+            {
+                Console.Write(new string(' ',number-row));
+                for (int col = 0; col < row; col++)
+                {
+                    Console.Write("*");
+                    Console.Write(" ");
+                }
+                
+                Console.WriteLine();
+            }
+            for (int row = number-1; row >0; row--)
+            {
+                Console.Write(new string(' ', number - row));
+                for (int col = 0; col < row; col++)
+                {
+                    Console.Write("*");
+                    Console.Write(" ");
+                }
+
+                Console.WriteLine();
+            }
+
+
+        }
+    }
+}
