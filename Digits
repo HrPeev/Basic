@@ -1,0 +1,44 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Numbers
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int num = int.Parse(Console.ReadLine());
+            int numA = num / 100;
+            int numB = (num / 10) % 10;
+            int numC = (num % 100)%10;
+            int numTemp = num;            
+            for (int i =numA+numB; i > 0; i--)
+            {
+                for (int j = numA+numC; j > 0; j--)
+                {
+                    if (numTemp%5==0)
+                    {
+                        numTemp -= numA;
+                        Console.Write(numTemp + " ");
+                    }
+                    else if (numTemp%3==0)
+                    {
+                        numTemp -= numB;
+                        Console.Write(numTemp + " ");
+                    }
+                    else 
+                    {
+                        numTemp += numC;
+                        Console.Write(numTemp + " ");
+                    }
+                    
+                    
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
