@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExercisesArrays_MaxSequenceOfEqualElements07
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] arr = Console.ReadLine()
+                .Split()
+                .Select(int.Parse)
+                .ToArray();            
+            int indexHolderOld=0;
+            int indexHolderNew=0;
+            
+            int counterNew = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                int counterOld = 0;
+                for (int j = 0; j < arr.Length; j++)
+                {
+                    if (arr[i]==arr[j])
+                    {
+                        counterOld++;
+                        indexHolderOld = i;
+                    }
+                    else
+                    {
+                        counterOld = 0;
+                        indexHolderOld = 0;
+                    }
+                    if (counterOld>counterNew)
+                    {
+                        counterNew = counterOld;
+                        indexHolderNew = indexHolderOld;
+
+                    }
+                }
+            }
+            for (int i = 0; i < counterNew; i++)
+            {
+                Console.Write(arr[indexHolderNew]+" ");
+            }
+
+        }
+    }
+}
