@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExercisesArrays_EualSums06
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] arr = Console.ReadLine()
+                .Split()
+                .Select(int.Parse)
+                .ToArray();
+            bool Sums = false;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                int leftSum = 0;
+                int RightSum = 0;
+                for (int j = arr.Length-1; j >i; j--)
+                {
+                    RightSum += arr[j];
+                }
+                for (int k = 0; k <i; k++)
+                {
+                    leftSum += arr[k];
+                }
+                if (RightSum==leftSum)
+                {
+                    Console.WriteLine(i);
+                    Sums = true;
+                    break;
+                }
+            }
+            if (Sums==false)
+            {
+                Console.WriteLine("no");
+            }
+        }
+    }
+}
