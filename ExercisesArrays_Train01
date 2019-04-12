@@ -1,0 +1,28 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExercisesArrays_Train01
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int wagons = int.Parse(Console.ReadLine());
+            int allPasengers = 0;
+            int[] train = new int[wagons];
+            for (int i = 0; i < wagons; i++)
+            {
+                int peopleInWagon = int.Parse(Console.ReadLine());
+                allPasengers += peopleInWagon;
+                train[i] = peopleInWagon;
+                
+
+            }
+            Console.WriteLine("{0}",string.Join(" ",train));
+            Console.WriteLine(allPasengers);
+        }
+    }
+}
