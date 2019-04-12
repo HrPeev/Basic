@@ -1,0 +1,38 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExercisesArrays_ZigZagArray03
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int pairs = int.Parse(Console.ReadLine());
+            int[] firstArr = new int[pairs];
+            int[] secondArr = new int[pairs];
+            for (int i = 0; i < pairs; i++)
+            {
+                int[] curentPairs = Console.ReadLine()
+                    .Split()
+                    .Select(int.Parse)
+                    .ToArray();
+                if (i%2==0)
+                {
+                    firstArr[i] = curentPairs[0];
+                    secondArr[i] = curentPairs[1];
+                }
+                else
+                {
+                    firstArr[i] = curentPairs[1];
+                    secondArr[i] = curentPairs[0];
+
+                }
+            }
+            Console.WriteLine("{0}",string.Join(" ",firstArr));
+            Console.WriteLine("{0}", string.Join(" ", secondArr));
+        }
+    }
+}
