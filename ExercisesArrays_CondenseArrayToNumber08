@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExercisesArrays_CondenseArrayToNumber08
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] arrNumbers = Console.ReadLine()
+                .Split()
+                .Select(int.Parse)
+                .ToArray();
+            if (arrNumbers.Length==1)
+            {
+                Console.WriteLine("{0}",arrNumbers[0]);
+                return;
+            }
+            while (arrNumbers.Length>2)
+            {
+                int[] arrCondense = new int[arrNumbers.Length - 1];
+
+
+                for (int i = 0; i < arrNumbers.Length - 1; i++)
+                {
+
+
+                    arrCondense[i] = arrNumbers[i] + arrNumbers[i + 1];
+                }
+                arrNumbers = arrCondense;
+
+               
+            }
+                     
+
+
+            
+            Console.WriteLine("{0}",arrNumbers[0]+arrNumbers[1]);
+           
+        }
+    }
+}
