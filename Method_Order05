@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Method_Order05
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string product = Console.ReadLine();
+            int products = int.Parse(Console.ReadLine());
+            CalculatePriceOfProducts(product, products);
+        }
+
+        private static void CalculatePriceOfProducts (string product, int products)
+        {
+            double price;
+            if (product=="coffee")
+            {
+                price = 1.50*products;
+                Console.WriteLine("{0:f2}",price);
+            }
+            else if (product == "water")
+            {
+                price = 1.00 * products;
+                Console.WriteLine("{0:f2}", price);
+            }
+            else if (product == "coke")
+            {
+                price = 1.40 * products;
+                Console.WriteLine("{0:f2}", price);
+            }
+            else if (product == "snacks")
+            {
+                price = 2.00 * products;
+                Console.WriteLine("{0:f2}", price);
+            }
+        }
+    }
+}
