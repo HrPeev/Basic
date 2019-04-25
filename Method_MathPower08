@@ -1,0 +1,23 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Method_MathPower08
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double number = double.Parse(Console.ReadLine());
+            int pow = int.Parse(Console.ReadLine());
+            Console.WriteLine(RiseNumberToPow(number, pow));
+        }
+        private static double RiseNumberToPow(double number,int pow)
+        {
+            double result=Math.Pow(number, pow);
+            return result;
+        }
+    }
+}
