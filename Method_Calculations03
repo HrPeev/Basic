@@ -1,0 +1,50 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Method_Calculations03
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string command = Console.ReadLine();
+            int numA = int.Parse(Console.ReadLine());
+            int numB = int.Parse(Console.ReadLine());
+            if (command=="add")
+            {
+                AddNumbers(numA,numB);
+            }
+            else if (command=="subtract")
+            {
+                SubtractNumbers(numA,numB);
+            }
+            else if (command == "multiply")
+            {
+                MultiplyNumbers(numA, numB);
+            }
+            else if (command == "divide")
+            {
+                DivideNumbers(numA, numB);
+            }
+        }
+        public static void AddNumbers(int numA , int numB)
+        {
+            Console.WriteLine(numA+numB);
+        }
+        public static void SubtractNumbers(int numA, int numB)
+        {
+            Console.WriteLine(numA-numB);
+        }
+        public static void DivideNumbers(int numA, int numB)
+        {
+            Console.WriteLine(numA/numB);
+        }
+        public static void MultiplyNumbers(int numA, int numB)
+        {
+            Console.WriteLine(numA*numB);
+        }
+    }
+}
