@@ -1,0 +1,38 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Method_PrintTriangle04
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int num = int.Parse(Console.ReadLine());
+            PrintTriangle(num);
+
+        }
+        private static void PrintTriangle(int num)
+        {
+            for (int row = 1; row <= num; row++)
+            {
+                for (int col = 1; col <= row; col++)
+                {
+                    Console.Write(col+" ");
+                }
+                Console.WriteLine();
+            }
+
+            for (int row = num; row >= 1; row--)
+            {
+                for (int col = 1; col < row; col++)
+                {
+                    Console.Write(col+" ");
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
