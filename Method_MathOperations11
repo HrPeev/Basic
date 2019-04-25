@@ -1,0 +1,44 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Method_MathOperations11
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int firstNum = int.Parse(Console.ReadLine());
+            string function = Console.ReadLine();
+            int secondNum = int.Parse(Console.ReadLine());
+            double resultAfterOperations = MathOperations(firstNum,function,secondNum);
+            Console.WriteLine(resultAfterOperations);
+            
+        }
+        private static double MathOperations(int firstNum,string function, int secondNum)
+        {
+            double result=0;
+            switch (function)
+            {
+                case "/":
+                    result =firstNum / secondNum;
+                    break;
+                case "*":
+                    result = firstNum * secondNum;
+                    break;
+                case "-":
+                    result=  firstNum - secondNum;
+                    break;
+                case "+":
+                    result = firstNum + secondNum;
+                    break;
+                default:
+                    break;
+            }
+            return result;
+            
+        }
+    }
+}
