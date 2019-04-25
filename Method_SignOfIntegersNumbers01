@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Method_SignOfIntegersNumbers01
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            SignDefinition(int.Parse(Console.ReadLine()));
+
+        }
+
+        private static void SignDefinition(int number)
+        {
+            if (number<0)
+            {
+                Console.WriteLine($"The number {number} is negative.");
+            }
+            else if (number==0)
+            {
+                Console.WriteLine($"The number {number} is zero.");
+            }
+            else
+            {
+                Console.WriteLine($"The number {number} is positive.");
+            }
+        }
+    }
+}
