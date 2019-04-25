@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Method_MultiplyEvensByOdds10
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int input =Math.Abs(int.Parse(Console.ReadLine()));
+            string numbers = input.ToString();
+            int multiplyResult = MultiplyEvensByOdds(numbers);
+            Console.WriteLine(multiplyResult);
+            
+            
+
+        }
+        static int MultiplyEvensByOdds(string numbers)
+        {
+            int evens = 0;
+            int odds = 0;
+
+            
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                int curentNum = int.Parse(numbers[i].ToString());
+
+                if (curentNum % 2 == 0)
+                {
+                    evens += curentNum;
+                }
+                else
+                {
+                    odds += curentNum;
+                }
+            }
+            return evens * odds;
+        }
+    }
+}
