@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FundametntalsBasic_LoginUser
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string userName = Console.ReadLine();
+            char[] arr = userName.ToCharArray();
+            Array.Reverse(arr);
+            string pass=new string (arr);
+            
+
+            for (int i = 0; i < 4; i++)
+            {
+                string input = Console.ReadLine();
+                
+                if (input==pass.ToString())
+                {
+                    Console.WriteLine("User {0} logged in.",userName);
+                    
+                    break;
+                }
+                else if (i!=3)
+                {
+                    Console.WriteLine("Incorrect password. Try again.");
+                }
+                else
+                {
+                    Console.WriteLine("User {0} blocked!",userName);
+                }
+            }
+        }
+    }
+}
