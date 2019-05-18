@@ -1,0 +1,138 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FundametntalsBasic_Vacantion03
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int people = int.Parse(Console.ReadLine());
+            string kindOfPeople = Console.ReadLine();
+            string dayOfWeekend = Console.ReadLine();
+            double price =0.0;
+            double totalPrice = 0.0;
+            if (kindOfPeople=="Students")
+            {
+                if (dayOfWeekend=="Friday")
+                {
+                    price = 8.45;
+                    if (people>=30)
+                    {
+                        totalPrice = (people * price) * 0.85;
+                    }
+                    else
+                    {
+                        totalPrice = people * price;
+                    }
+                }
+                else if (dayOfWeekend == "Saturday")
+                {
+                    price = 9.80;
+                    if (people >= 30)
+                    {
+                        totalPrice = (people * price) * 0.85;
+                    }
+                    else
+                    {
+                        totalPrice = people * price;
+                    }
+                }
+                else if (dayOfWeekend =="Sunday")
+                {
+                    price = 10.46;
+                    if (people >= 30)
+                    {
+                        totalPrice = (people * price) * 0.85;
+                    }
+                    else
+                    {
+                        totalPrice = people * price;
+                    }
+                }
+            }
+            else if (kindOfPeople=="Business")
+            {
+                if (dayOfWeekend == "Friday")
+                {
+                    price = 10.90;
+                    if (people >= 100)
+                    {
+                        totalPrice = (people-10)*price;
+                    }
+                    else
+                    {
+                        totalPrice = people * price;
+                    }
+                }
+                else if (dayOfWeekend == "Saturday")
+                {
+                    price = 15.60;
+                    if (people >= 100)
+                    {
+                        totalPrice = (people - 10) * price;
+                    }
+                    else
+                    {
+                        totalPrice = people * price;
+                    }
+                }
+                else if (dayOfWeekend == "Sunday")
+                {
+                    price = 16.0;
+                    if (people >= 100)
+                    {
+                        totalPrice = (people - 10) * price;
+                    }
+                    else
+                    {
+                        totalPrice = people * price;
+                    }
+                }
+            }
+            else if (kindOfPeople == "Regular")
+            {
+                if (dayOfWeekend == "Friday")
+                {
+                    price = 15.0;
+                    if (people >= 10&&people<=20)
+                    {
+                        totalPrice = (people* price)*0.95;
+                    }
+                    else
+                    {
+                        totalPrice = people * price;
+                    }
+                }
+                else if (dayOfWeekend == "Saturday")
+                {
+                    price = 20.0;
+                    if (people >= 10 && people <= 20)
+                    {
+                        totalPrice = (people * price) * 0.95;
+                    }
+                    else
+                    {
+                        totalPrice = people * price;
+                    }
+                }
+                else if (dayOfWeekend == "Sunday")
+                {
+                    price = 22.50;
+                    if (people >= 10 && people <= 20)
+                    {
+                        totalPrice = (people * price) * 0.95;
+                    }
+                    else
+                    {
+                        totalPrice = people * price;
+                    }
+                }
+            }
+            Console.WriteLine("Total price: {0:F2}",totalPrice);
+        }
+    }
+}
