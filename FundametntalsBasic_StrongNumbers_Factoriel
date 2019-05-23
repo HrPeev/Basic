@@ -1,0 +1,42 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FundametntalsBasic_StrongNumbers_Factoriel
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input = Console.ReadLine();
+            int inputNum = int.Parse(input);
+            char[] numArr = input.ToCharArray();
+            int sum = 0;            
+            for (int i = 0; i <numArr.Length; i++)
+            {
+                int factoriel = 1;
+                int curentNum = int.Parse(numArr[i].ToString());
+                for (int j = curentNum; j >= 1; j--)
+                {
+                    //Console.WriteLine(i);
+                    //Console.WriteLine(j);
+                    //Console.WriteLine(factoriel);
+                    
+                    factoriel *= j;
+                }
+                sum += factoriel;
+            }
+            if (sum==inputNum)
+            {
+                Console.WriteLine("yes");
+            }
+            else
+            {
+                Console.WriteLine("no");
+            }
+
+        }
+    }
+}
