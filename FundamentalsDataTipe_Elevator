@@ -1,0 +1,19 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FundamentalsDataTipe_Elevator
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int persones = int.Parse(Console.ReadLine());
+            int elevatorCapacity = int.Parse(Console.ReadLine());
+            double courses = Math.Ceiling((double)persones / elevatorCapacity);
+            Console.WriteLine(courses);
+        }
+    }
+}
