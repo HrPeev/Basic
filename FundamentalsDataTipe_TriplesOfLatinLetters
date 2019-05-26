@@ -1,0 +1,26 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FundamentalsDataTipe_TriplesOfLatinLetters
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int letterNum = int.Parse(Console.ReadLine());
+            for (int i = 'a'; i <'a'+ letterNum; i++)
+            {
+                for (int j = 'a'; j < 'a' + letterNum; j++)
+                {
+                    for (int k = 'a'; k < 'a' + letterNum; k++)
+                    {
+                        Console.WriteLine("{0}{1}{2}",(char)i,(char)j,(char)k);
+                    }
+                }
+            }
+        }
+    }
+}
