@@ -1,0 +1,23 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FundamentalsDataTipe_SumOfChars
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int numberOfChars = int.Parse(Console.ReadLine());
+            int sumOfChars = 0;
+            for (int i = 0; i < numberOfChars; i++)
+            {
+                char curent =char.Parse(Console.ReadLine());
+                sumOfChars += (int)curent;
+            }
+            Console.WriteLine("The sum equals: {0}", sumOfChars);
+        }
+    }
+}
