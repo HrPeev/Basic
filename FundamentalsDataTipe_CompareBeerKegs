@@ -1,0 +1,31 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FundamentalsDataTipe_CompareBeerKegs
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int kegs = int.Parse(Console.ReadLine());
+            double biggestVolume = 0;
+            string nameOfBiggestKeg = string.Empty;
+            for (int i = 0; i < kegs; i++)
+            {
+                string kegModel = Console.ReadLine();
+                double radiusOfCurentKeg = double.Parse(Console.ReadLine());
+                int heightOfCurentKeg = int.Parse(Console.ReadLine());
+                double volumeOfCurentKeg = Math.PI * Math.Pow(radiusOfCurentKeg, 2) * heightOfCurentKeg;
+                if (volumeOfCurentKeg>biggestVolume)
+                {
+                    biggestVolume = volumeOfCurentKeg;
+                    nameOfBiggestKeg = kegModel;
+                }
+            }
+            Console.WriteLine(nameOfBiggestKeg);
+        }
+    }
+}
