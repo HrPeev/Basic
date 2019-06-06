@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Fundamentals_Arrays_Train
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int wagons = int.Parse(Console.ReadLine());
+            int[] pasangersInCurentWagon = new int[wagons];
+            int allPasengers = 0;
+            for (int i = 0; i < wagons; i++)
+            {
+                pasangersInCurentWagon[i] = int.Parse(Console.ReadLine());
+                allPasengers += pasangersInCurentWagon[i];
+                
+
+            }
+            foreach (var item in pasangersInCurentWagon)
+            {
+                Console.Write(item+" ");
+                
+            }
+            Console.WriteLine();
+            Console.WriteLine(allPasengers);
+        }
+    }
+}
