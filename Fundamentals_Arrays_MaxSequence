@@ -1,0 +1,58 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Fundamentals_Arrays_MaxSequence
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] arr = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
+            int[] sequenceMax = Array.Empty<int>();
+            int num = arr[0];
+            int sequenceCounter = 1;
+            int curentCounter = 1;
+            int numOfMaxSequence = 0;
+            for (int i = 1; i < arr.Length; i++)
+            {
+                
+                if (num==arr[i])
+                {
+                    curentCounter++;
+                }
+                else
+                {
+                    num = arr[i];
+                    if (sequenceCounter<curentCounter)
+                    {
+                        sequenceCounter = curentCounter;
+                        numOfMaxSequence = arr[i-1];
+                    }
+                    
+                    curentCounter = 1;
+                }
+
+            }
+            if (curentCounter>sequenceCounter)
+            {
+                for (int i = 0; i < curentCounter; i++)
+                {
+                    Console.Write(num + " ");
+                }
+                Console.WriteLine();
+            }
+            else
+            {
+                for (int i = 0; i < sequenceCounter; i++)
+                {
+                    Console.Write(numOfMaxSequence + " ");
+                }
+                Console.WriteLine();
+            }
+            
+        }
+    }
+}
