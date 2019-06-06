@@ -1,0 +1,42 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Fundamentals_Arrays_ZigZagArray
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int arrayLen = int.Parse(Console.ReadLine());
+            int[] firstArr = new int[arrayLen];
+            int[] secondArr = new int[arrayLen];
+            for (int i = 0; i < arrayLen; i++)
+            {
+                string input = Console.ReadLine();
+                int [] curentNum = input.Split(' ').Select(int.Parse).ToArray();
+                if (i%2==0)
+                {
+                    secondArr[i] = curentNum[1];
+                    firstArr[i] = curentNum[0];
+                }
+                else
+                {
+                    secondArr[i] = curentNum[0];
+                    firstArr[i] = curentNum[1];
+                }
+            }
+            foreach (var num in firstArr)
+            {
+                Console.Write(num+" ");
+            }
+            Console.WriteLine();
+            foreach (var num in secondArr)
+            {
+                Console.Write(num+" ");
+            }
+        }
+    }
+}
