@@ -1,0 +1,24 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Fundamentals_Methods_SmallestNumber
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int first = int.Parse(Console.ReadLine());            
+            int second = int.Parse(Console.ReadLine());
+            int third = int.Parse(Console.ReadLine());
+            PrintSmallestNumber(first,second,third);
+        }
+
+        private static void PrintSmallestNumber(int a, int b, int c)
+        {
+           Console.WriteLine(Math.Min(a,Math.Min(c,b)));
+        }
+    }
+}
