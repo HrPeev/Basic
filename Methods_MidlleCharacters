@@ -1,0 +1,35 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Fundamentals_Methods_MidlleCharacters
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input = Console.ReadLine();
+            Console.WriteLine("{0}",PrintMidlleCharacters(input));
+        }
+
+        private static string PrintMidlleCharacters(string input)
+        {
+            string result = string.Empty;
+            char[] arr = input.ToCharArray();
+            if (arr.Length%2==0)
+            {
+                for (int i = arr.Length/2-1; i <= arr.Length/2; i++)
+                {
+                    result += arr[i];
+                }
+            }
+            else
+            {
+                result = arr[arr.Length / 2].ToString();
+            }
+            return result;
+        }
+    }
+}
