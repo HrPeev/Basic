@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Fundamentals_Methods_VowelsCount
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string income = Console.ReadLine();
+            Console.WriteLine("{0}",VowelsCounter(income));
+
+        }
+
+        private static int VowelsCounter(string income)
+        {
+            int counter = 0;
+            char[] incomeToChars = income.ToLower().ToCharArray();
+            for (int i = 0; i < incomeToChars.Length; i++)
+            {
+                if (incomeToChars[i] == 'a' 
+                    || incomeToChars[i] == 'e' 
+                    || incomeToChars[i] == 'i'
+                    || incomeToChars[i] == 'o'
+                    || incomeToChars[i] == 'u'
+                    || incomeToChars[i] == 'y')
+                {
+                    counter++;
+                }
+            }
+            return counter;
+        }
+    }
+}
