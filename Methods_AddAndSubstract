@@ -1,0 +1,30 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Fundamentals_Methods_AddAndSubstract
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int first = int.Parse(Console.ReadLine());
+            int second= int.Parse(Console.ReadLine());
+            int third = int.Parse(Console.ReadLine());
+            Console.WriteLine("{0}",SubstractThirdFromSumOfFirstTwo(SumFirstTwoIntegers(first,second),third));
+
+        }
+        private static int SumFirstTwoIntegers(int first, int second)
+        {
+            int sum = first + second;
+            return sum;
+        }
+        private static int SubstractThirdFromSumOfFirstTwo(int sum, int third)
+        {
+            int result = sum - third;
+            return result;
+        }
+    }
+}
