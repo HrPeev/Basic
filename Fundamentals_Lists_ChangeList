@@ -1,0 +1,31 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Fundamentals_Lists_ChangeList
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> numbers = Console.ReadLine().Split(' ').Select(int.Parse).ToList();
+            string input = string.Empty;
+            while ((input=Console.ReadLine())!="end")
+            {
+                string[] splitedInput = input.Split(' ').ToArray();
+                if (splitedInput[0]=="Delete")
+                {
+                    numbers.RemoveAll(x => x==(int.Parse(splitedInput[1])));
+                }
+                else
+                {
+                    numbers.Insert(int.Parse(splitedInput[2]), int.Parse(splitedInput[1]));
+                }
+            }
+            Console.WriteLine(string.Join(" ",numbers));
+            
+        }
+    }
+}
