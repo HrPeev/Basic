@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Fundamentals_Lists_BombNumbers
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> numbers = new List<int>(1000);
+               numbers= Console.ReadLine()
+                .Split(' ')
+                .Select(int.Parse)
+                .ToList();
+            int[] bomb = Console.ReadLine()
+                .Split(' ')
+                .Select(int.Parse)
+                .ToArray();
+            while (numbers.Contains(bomb[0]))
+            {
+                int bombNumber= numbers.IndexOf(bomb[0]);
+
+                for (int i = bombNumber; i < bombNumber+bomb[1]+1; i++)
+                {
+                    if (bombNumber<numbers.Count)
+                    {
+                        numbers.RemoveAt(bombNumber);
+                    }
+                }
+                for (int i = bombNumber-bomb[1]; i < bombNumber; i++)
+                {
+                    if (i>=0)
+                    {
+                        numbers.RemoveAt(bombNumber - bomb[1]);
+                        
+                    }
+                }
+
+            }
+            int sum = 0;
+            foreach (var item in numbers)
+            {
+                sum += item;
+            }
+            Console.WriteLine(sum);
+        }
+    }
+}
