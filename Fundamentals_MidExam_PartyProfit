@@ -1,0 +1,50 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PartyProfit
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int partySize = int.Parse(Console.ReadLine());
+            int adventureDays = int.Parse(Console.ReadLine());
+            int profit = 0;
+            int spend = 0;
+            for (int i = 1; i <= adventureDays; i++)
+            {
+                if (i%10==0)
+                {
+                    partySize -= 2;
+                }
+                if (i%15==0)
+                {
+                    partySize += 5;
+                }
+                if (i%5==0)
+                {
+                    if (i%3==0)
+                    {
+                        profit += 20 * partySize;
+                        spend += 2 * partySize;
+                    }
+                    else
+                    {
+                        profit += 20 * partySize;
+                    }
+                }
+                if (i%3==0)
+                {
+                    spend += 3 * partySize;
+                }
+                profit += 50;
+                spend += 2 * partySize;
+            }
+            Console.WriteLine("{0} companions received {1} coins each.",partySize,(profit-spend)/partySize);
+            
+        }
+    }
+}
