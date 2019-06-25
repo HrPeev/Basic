@@ -1,0 +1,53 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Fundamentals_MidExam_EasterGifts
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<string> giftList = Console.ReadLine().Split(' ').ToList();
+            List<string> comand = Console.ReadLine().Split(' ').ToList();
+            int index;
+            while (comand[0]!="No")
+            {
+                if (comand[0]=="OutOfStock")
+                {
+                    while (giftList.Contains(comand[1]))
+                    {
+                        index = giftList.LastIndexOf(comand[1]);
+                        giftList[index] = "None";
+                    }
+                    
+                   
+                }
+                else if (comand[0] == "Required")
+                {
+                    index = int.Parse(comand[2]);
+                    if (index>=0&&index<giftList.Count)
+                    {
+                        giftList[index] = comand[1];
+                    }
+                }
+                else if (comand[0] == "JustInCase")
+                {
+                    giftList[giftList.Count-1]=comand[1];
+                }
+                comand = Console.ReadLine().Split(' ').ToList();
+
+
+            }
+            while (giftList.Contains("None"))
+            {
+
+                giftList.Remove("None");
+            }
+
+            Console.WriteLine(string.Join(" ",giftList));
+        }
+    }
+}
