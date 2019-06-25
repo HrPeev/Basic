@@ -1,0 +1,72 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Fundamentals_MidExam_LastStop
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<string> paintingNumbers = Console.ReadLine()
+                .Split(' ')
+                .ToList();
+            List<string> comands = Console.ReadLine()
+                .Split(' ')
+                .ToList();
+            int index;
+            while (comands[0]!="END")
+            {
+                if (comands[0]=="Change")
+                {
+                    if (paintingNumbers.Contains(comands[1]))
+                    {
+                        index = paintingNumbers.IndexOf(comands[1]);
+                        paintingNumbers[index] = comands[2];
+                    }
+                }
+                else if (comands[0] == "Hide")
+                {
+                    while (paintingNumbers.Contains(comands[1]))
+                    {
+                        paintingNumbers.Remove(comands[1]);
+                    }
+                   
+                }
+                else if (comands[0] == "Switch")
+                {
+                    if (paintingNumbers.Contains(comands[1]) && paintingNumbers.Contains(comands[2]))
+                    {
+
+                        index = paintingNumbers.IndexOf(comands[1]);
+                        int indexTemp = paintingNumbers.IndexOf(comands[2]);
+                        paintingNumbers[index] = comands[2];
+                        paintingNumbers[indexTemp] = comands[1];
+                        
+                        
+                       
+                        
+                    }
+
+                }
+                else if (comands[0] == "Insert")
+                {
+                    index = int.Parse(comands[1])+1;
+                    if(index<paintingNumbers.Count-1)
+                    {
+                        paintingNumbers.Insert(index, comands[2]);
+
+                    }
+                }
+                else if (comands[0] == "Reverse")
+                {
+                    paintingNumbers.Reverse();
+                }
+                comands = Console.ReadLine().Split(' ').ToList();
+            }
+            Console.WriteLine(string.Join(" ",paintingNumbers));
+        }
+    }
+}
