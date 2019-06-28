@@ -1,0 +1,69 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Fundamentals_MidExam_BreadFactory
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<string> ordersForTheDay = Console.ReadLine().Split('|').ToList();
+            int energy = 100;
+            int coins = 100;
+            for (int i = 0; i < ordersForTheDay.Count; i++)
+            {
+                List<string> tasks = ordersForTheDay[i].Split('-').ToList();
+                if (tasks[0]=="rest")
+                {
+                    if ((energy+int.Parse(tasks[1]))<=100)
+                    {
+                        Console.WriteLine("You gained {0} energy.",tasks[1]);
+                        energy += int.Parse(tasks[1]);
+                        Console.WriteLine("Current energy: {0}.", energy);
+                    }
+                    else
+                    {
+                        Console.WriteLine("You gained 0 energy.", tasks[1]);
+                        Console.WriteLine("Current energy: {0}.", energy);
+                    }
+
+                }
+                else if (tasks[0] == "order")
+                {
+                    if (energy-30>=0)
+                    {
+                        Console.WriteLine("You earned {0} coins.",tasks[1]);
+                        coins += int.Parse(tasks[1]);
+                        energy -= 30;
+                    }
+                    else
+                    {
+                        Console.WriteLine("You had to rest!");
+                        energy += 50;
+                    }
+
+                }
+                else
+                {
+                    if (coins-int.Parse(tasks[1])>0)
+                    {
+                        Console.WriteLine("You bought {0}.",tasks[0]);
+                        coins -= int.Parse(tasks[1]);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Closed! Cannot afford {0}.",tasks[0]);
+                        return;
+                    }
+                }
+               
+            }
+             Console.WriteLine("Day completed!");
+            Console.WriteLine("Coins: {0}",coins);
+            Console.WriteLine("Energy: {0}",energy);
+        }
+    }
+}
