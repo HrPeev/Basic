@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Fundamentals_MidExam_CookingFactory
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<string> breads = Console.ReadLine().Split('#').ToList();
+            List<int> bestBatch = new List<int>() {int.MinValue};
+            while (breads[0]!="Bake It!")
+            {
+                List<int> curentBatch = breads.Select(int.Parse).ToList();
+                if (curentBatch.Sum()>bestBatch.Sum())
+                {
+                    bestBatch = curentBatch;
+                }
+
+                if (curentBatch.Sum() == bestBatch.Sum())
+                {
+                    double curentAverage = curentBatch.Sum() / curentBatch.Count;
+                    double bestBatchAverage = bestBatch.Sum() / bestBatch.Count;
+                    if (curentAverage > bestBatchAverage)
+                    {
+                        bestBatch = curentBatch;
+                    }
+
+                    else if (curentAverage == bestBatchAverage)
+                    {
+                       
+                        if (curentBatch.Count<bestBatch.Count)
+                        {
+                            bestBatch = curentBatch;
+                        }
+                    }
+
+                }
+                breads = Console.ReadLine().Split('#').ToList();
+
+
+
+            }
+            Console.WriteLine("Best Batch quality: {0}",bestBatch.Sum());
+            Console.WriteLine(string.Join(" ",bestBatch));
+        }
+    }
+}
