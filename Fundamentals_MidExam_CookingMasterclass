@@ -1,0 +1,31 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Fundamentals_MidExam_CookingMasterclass
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double buget = double.Parse(Console.ReadLine());
+            int students = int.Parse(Console.ReadLine());
+            double flourPrice = double.Parse(Console.ReadLine());
+            double eggsPrice = double.Parse(Console.ReadLine()) ;
+            double apronPrice = double.Parse(Console.ReadLine());
+            int freeFlourPackets = students / 5;
+            double spending = flourPrice * (students - freeFlourPackets) + eggsPrice *10* students + apronPrice * Math.Ceiling(students * 1.2);
+            if (spending<=buget)
+            {
+                Console.WriteLine("Items purchased for {0:f2}$.",spending);
+            }
+            else
+            {
+                Console.WriteLine("{0:f2}$ more needed.",spending-buget);
+            }
+            
+        }
+    }
+}
