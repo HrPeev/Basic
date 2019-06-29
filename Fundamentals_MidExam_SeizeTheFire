@@ -1,0 +1,65 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Fundamentals_MidExam_SeizeTheFire
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<string> totalFireCells = Console.ReadLine().Split('#').ToList();
+            int water = int.Parse(Console.ReadLine());
+            double effort = 0.0;
+            int totalFire = 0;
+            List<string> cells = new List<string>();
+            for (int i = 0; i < totalFireCells.Count; i++)
+            {
+                List<string> curentCell = totalFireCells[i].Split(' ').ToList();
+                if (curentCell[0]=="High" && (int.Parse(curentCell[2])<126&& (int.Parse(curentCell[2]))>80))
+                {
+                    if (water- int.Parse(curentCell[2])>=0)
+                    {
+                        water -= int.Parse(curentCell[2]);
+                        effort += int.Parse(curentCell[2]) * 0.25;
+                        totalFire += int.Parse(curentCell[2]);
+                        cells.Add(curentCell[2]);
+
+                    }
+                }
+                else if (curentCell[0] == "Medium" && (int.Parse(curentCell[2]) < 81 && (int.Parse(curentCell[2])) > 50))
+                {
+                    if (water - int.Parse(curentCell[2]) >= 0)
+                    {
+                        water -= int.Parse(curentCell[2]);
+                        effort += int.Parse(curentCell[2]) * 0.25;
+                        totalFire += int.Parse(curentCell[2]);
+                        cells.Add(curentCell[2]);
+
+                    }
+                }
+                else if (curentCell[0] == "Low" && (int.Parse(curentCell[2]) < 51 && (int.Parse(curentCell[2])) > 0))
+                {
+                    if (water - int.Parse(curentCell[2]) >= 0)
+                    {
+                        water -= int.Parse(curentCell[2]);
+                        effort += int.Parse(curentCell[2]) * 0.25;
+                        totalFire += int.Parse(curentCell[2]);
+                        cells.Add(curentCell[2]);
+
+                    }
+                }
+            }
+            Console.WriteLine("Cells:");
+            foreach (var item in cells)
+            {
+                Console.WriteLine(" - "+item);
+            }
+            Console.WriteLine("Effort: {0:f2}",effort);
+            Console.WriteLine("Total Fire: {0}",totalFire);
+
+        }
+    }
+}
