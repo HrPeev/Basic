@@ -1,0 +1,53 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Fundamentals_MidExam_HuntingGames
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int adventuresDays = int.Parse(Console.ReadLine());
+            int playerNumber = int.Parse(Console.ReadLine());
+            double groupEnergy = double.Parse(Console.ReadLine());
+            double waterPerDay = playerNumber *adventuresDays* double.Parse(Console.ReadLine());
+            double foodPerDay = playerNumber *adventuresDays* double.Parse(Console.ReadLine());
+            for (int i = 1; i <= adventuresDays; i++)
+            {
+                double energyLost = double.Parse(Console.ReadLine());
+                if (groupEnergy-energyLost<=0)
+                {
+                    groupEnergy -= energyLost;
+                    break;
+                }
+                else
+                {
+                    groupEnergy -= energyLost;
+                    if (i%2==0)
+                    {
+                        groupEnergy *= 1.05;
+                        waterPerDay *= 0.7;
+                    }
+                    if (i%3==0)
+                    {
+                        foodPerDay -=(foodPerDay/playerNumber);
+                        groupEnergy *= 1.1;
+
+                    }
+                }
+
+            }
+            if (groupEnergy>0)
+            {
+                Console.WriteLine("You are ready for the quest. You will be left with - {0:f2} energy!",groupEnergy);
+            }
+            else
+            {
+                Console.WriteLine("You will run out of energy. You will be left with {0:f2} food and {1:f2} water.",foodPerDay,waterPerDay);
+            }
+        }
+    }
+}
