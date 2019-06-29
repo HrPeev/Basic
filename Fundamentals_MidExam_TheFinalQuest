@@ -1,0 +1,74 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Fundamentals_MidExam_TheFinalQuest
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<string> massege = Console.ReadLine().Split(' ').ToList();
+            List<string> comands = Console.ReadLine().Split(' ').ToList();
+            while (comands[0]!="Stop")
+            {
+                if (comands[0]=="Delete")
+                {
+                    if (int.Parse(comands[1])<=massege.Count-2&& (int.Parse(comands[1])>=0))
+                    {
+                        massege.RemoveAt(int.Parse(comands[1]) + 1);
+                    }
+                }
+                else if (comands[0] == "Swap")
+                {
+                    if (massege.Contains(comands[1])&& massege.Contains(comands[2]))
+                    {
+                        int tempOneIndex = massege.IndexOf(comands[1]);
+                        int tempTwoIndex = massege.IndexOf(comands[2]);
+                        massege.Insert(tempOneIndex, comands[2]);
+                        massege.RemoveAt(tempOneIndex+1);
+                        massege.Insert(tempTwoIndex, comands[1]);
+                        massege.RemoveAt(tempTwoIndex + 1);
+                                            
+
+                    }
+                }
+                else if (comands[0] == "Put")
+                {
+                    if (int.Parse(comands[2])>=1 && int.Parse(comands[2])<=massege.Count)
+                    {
+                        massege.Insert(int.Parse(comands[2])-1, comands[1]);
+                        //Console.WriteLine(string.Join(" ", massege));
+                        
+
+                    }
+                    else if (int.Parse(comands[2])==massege.Count+1)
+                    {
+                        massege.Add(comands[1]);
+                       
+                    }
+                }
+                else if (comands[0] == "Sort")
+                {
+                    massege.Sort();
+                    massege.Reverse();
+                    
+                }
+                else if (comands[0] == "Replace")
+                {
+                    if (massege.Contains(comands[2]))
+                    {
+                        int tempTwoIndex = massege.IndexOf(comands[2]);
+                        massege.Insert(tempTwoIndex, comands[1]);
+                        massege.RemoveAt(tempTwoIndex + 1);
+                       
+                    }
+                }
+                comands = Console.ReadLine().Split(' ').ToList();
+            }
+            Console.WriteLine(string.Join(" ", massege));
+        }
+    }
+}
