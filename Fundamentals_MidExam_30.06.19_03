@@ -1,0 +1,88 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Fundamentals_MidExam_RealExam03
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<string> contacts = Console.ReadLine()
+                .Split(' ')
+                .ToList();
+            List<string> comands = Console.ReadLine()
+                .Split(' ')
+                .ToList();
+            while (comands[0]!="Print")
+            {
+                if (comands[0]=="Add")
+                {
+                    if (contacts.Contains(comands[1]))
+                    {
+                        if (int.Parse(comands[2])>=0 && int.Parse(comands[2])<contacts.Count)
+                        {
+                            contacts.Insert(int.Parse(comands[2]), comands[1]);
+                        }
+                       
+                    }
+                    else
+                    {
+                        contacts.Add(comands[1]);
+                    }
+                }
+                else if (comands[0] == "Remove")
+                {
+
+                    if (int.Parse(comands[1]) >= 0 && int.Parse(comands[1]) < contacts.Count)
+                    {
+                        contacts.RemoveAt(int.Parse(comands[1]));
+                    }
+
+                }
+                else if (comands[0] == "Export")
+                {
+                    if (int.Parse(comands[1]) >= 0 && int.Parse(comands[1]) < contacts.Count)
+                    {
+                        List<string> temp = new List<string>();
+                        if (int.Parse(comands[1]) + int.Parse(comands[2]) >= contacts.Count)
+                        {
+                           
+                            for (int i = int.Parse(comands[1]); i < contacts.Count; i++)
+                            {
+                                temp.Add(contacts[i]);
+                            }
+                            Console.WriteLine(string.Join(" ", temp));
+                        }
+                        else
+                        {
+                            for (int i = int.Parse(comands[1]); i < int.Parse(comands[2])+ int.Parse(comands[1]); i++)
+                            {
+                                temp.Add(contacts[i]);
+                            }
+                            Console.WriteLine(string.Join(" ",temp));
+                        }
+                    }                
+
+
+                }
+                comands = Console.ReadLine()
+                .Split(' ')
+                .ToList();
+
+            }
+            if (comands[1]=="Normal")
+            {
+                Console.WriteLine("Contacts: "+ string.Join(" ",contacts));
+            }
+            else if (comands[1] == "Reversed")
+            {
+                contacts.Reverse();
+                Console.WriteLine("Contacts: "+string.Join(" ", contacts));
+
+            }
+        }
+    }
+}
