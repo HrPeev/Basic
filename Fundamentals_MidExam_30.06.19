@@ -1,0 +1,34 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Fundamentals_MidExam_RealExam01
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int steps = int.Parse(Console.ReadLine());
+            double stepsLenght = double.Parse(Console.ReadLine());
+            int neededDistance = int.Parse(Console.ReadLine());
+            double completeDistance = 0.0;
+            double percentageComplete = 0.0;
+            for (int i = 1; i <= steps; i++)
+            {
+                if (i%5==0)
+                {
+                    completeDistance += stepsLenght * 0.7;
+                }
+                else
+                {
+                    completeDistance += stepsLenght;
+                }
+            }
+            percentageComplete = ((completeDistance/100)/neededDistance) * 100;
+            Console.WriteLine("You travelled {0:f2}% of the distance!", percentageComplete);
+            
+        }
+    }
+}
