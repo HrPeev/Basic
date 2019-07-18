@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CountCharsInString
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] input = Console.ReadLine().Split(' ').ToArray();
+            var charsAndValue = new Dictionary<char, int>();
+            for (int i = 0; i < input.Length; i++)
+            {               
+                char[] arr = input[i].ToArray();
+                for (int j = 0; j < arr.Length; j++)
+                {
+                    if (!charsAndValue.Keys.Contains(arr[j]))
+                    {
+                        charsAndValue.Add(arr[j], 1);
+                    }
+                    else
+                    {
+                        charsAndValue[arr[j]] += 1;
+                    }
+                }
+            }
+            foreach (var item in charsAndValue)
+            {
+                Console.WriteLine($"{item.Key} -> {item.Value}");
+            }
+            
+        }
+    }
+}
