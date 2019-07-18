@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AMinerTask
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var resourses = new Dictionary<string, int>();
+            int count = 0;
+            string input = Console.ReadLine();
+            count++;
+            string curentResours = input;
+            while (input!="stop")
+            {
+                if (count%2!=0)
+                {
+                    if (!resourses.Keys.Contains(input))
+                    {
+                        resourses.Add(input, 0);
+                    }
+                    curentResours = input;
+                }
+                else
+                {
+                    resourses[curentResours] += int.Parse(input);
+
+                }
+                input = Console.ReadLine();
+                count++;                  
+
+            }
+            foreach (var resours in resourses)
+            {
+                Console.WriteLine($"{resours.Key} -> {resours.Value}");
+            }
+        }
+    }
+}
