@@ -1,0 +1,92 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LegendaryFarming
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var resourses = new Dictionary<string, int>();
+            SortedDictionary<string, int> mainResourses = new SortedDictionary<string, int>();
+            mainResourses["shards"] = 0;
+            mainResourses["fragments"] = 0;
+            mainResourses["motes"] = 0;
+            bool legendary = true;
+            while (legendary)
+            {
+                string[] input = Console.ReadLine().ToLower().Split(' ').ToArray();
+                for (int i = 0; i < input.Length; i++)
+                {
+                    if (i % 2 != 0)
+                    {
+                        if (!resourses.Keys.Contains(input[i]))
+                        {
+                            resourses[input[i]]= int.Parse(input[i - 1]);
+                        }
+                        else
+                        {
+                            resourses[input[i]] += int.Parse(input[i - 1]);
+                        }
+                                              
+                    }
+                    if (resourses.Keys.Contains("shards"))
+                    {
+                        mainResourses["shards"] = resourses["shards"];
+                        if (resourses["shards"] >= 250)
+                        {
+                            Console.WriteLine("Shadowmourne obtained!");
+                            resourses["shards"] -= 250;
+                            mainResourses["shards"] -= 250;
+                            legendary = false;
+                            break;
+                        }
+                    }
+                    if (resourses.Keys.Contains("fragments"))
+                    {
+                        mainResourses["fragments"] = resourses["fragments"];
+                        if (resourses["fragments"] >= 250)
+                        {
+                            Console.WriteLine("Valanyr obtained!");
+                            resourses["fragments"] -= 250;
+                            mainResourses["fragments"] -= 250;
+                            legendary = false;
+                            break;
+                        }
+                    }
+                    if (resourses.Keys.Contains("motes"))
+                    {
+                        mainResourses["motes"] = resourses["motes"];
+                        if (resourses["motes"] >= 250)
+                        {
+                            Console.WriteLine("Dragonwrath obtained!");
+                            resourses["motes"] -= 250;
+                            mainResourses["motes"] -= 250;
+                            legendary = false;
+                            break;
+                        }
+                    }
+                }                           
+                
+            }
+            resourses.Remove("shards");
+            resourses.Remove("fragments");
+            resourses.Remove("motes");
+            
+            
+            foreach (var item in mainResourses.OrderByDescending(x=>x.Value))
+            {
+                Console.WriteLine($"{item.Key}: {item.Value}");
+            }
+            foreach (var item in resourses.OrderBy(x=>x.Key))
+            {
+                Console.WriteLine($"{item.Key}: {item.Value}");
+            }
+
+
+        }
+    }
+}
