@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SoftUniParking
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int numberOfComands = int.Parse(Console.ReadLine());
+            var parkingUsers = new Dictionary<string, string>();
+            for (int i = 0; i < numberOfComands; i++)
+            {
+                string[] comands = Console.ReadLine().Split(' ').ToArray();
+                if (comands[0]=="register")
+                {
+                    if (!parkingUsers.ContainsKey(comands[1]))
+                    {
+                        parkingUsers.Add(comands[1], comands[2]);
+                        Console.WriteLine("{0} registered {1} successfully", comands[1], parkingUsers[comands[1]]);
+                    }
+                    else
+                    {
+                        
+                        Console.WriteLine("ERROR: already registered with plate number {0}", parkingUsers[comands[1]]);
+                    }                   
+
+                }
+                else if (comands[0]=="unregister")
+                {
+                    if (parkingUsers.ContainsKey(comands[1]))
+                    {
+                        Console.WriteLine("{0} unregistered successfully",comands[1]);
+                        parkingUsers.Remove(comands[1]);
+                    }
+                    else
+                    {
+                        Console.WriteLine("ERROR: user {0} not found",comands[1]);
+                    }
+                }
+            }
+            foreach (var user in parkingUsers)
+            {
+                Console.WriteLine($"{user.Key} => {user.Value}");
+            }
+        }
+    }
+}
