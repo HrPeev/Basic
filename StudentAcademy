@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace StudentAcademy
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int pairsComand = int.Parse(Console.ReadLine());
+            var studentsAndGrades = new Dictionary<string, List<double>>();
+            for (int i = 0; i < pairsComand; i++)
+            {
+                string student = Console.ReadLine();
+                if (!studentsAndGrades.ContainsKey(student))
+                {
+                    studentsAndGrades.Add(student,new List<double>());
+                }
+                double grade = double.Parse(Console.ReadLine());
+                studentsAndGrades[student].Add(grade);
+            }
+            
+            foreach (var student in studentsAndGrades.OrderByDescending(x=>x.Value.Average()))
+            {
+                if (student.Value.Average()>=4.50)
+                {
+                    Console.WriteLine($"{student.Key} -> {student.Value.Average():f2}");
+                }
+                   
+                
+                   
+                   
+               
+            }
+        }
+    }
+}
