@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CompanyUsers
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] input = Console.ReadLine().Split(new[] { " -> " }, StringSplitOptions.None).ToArray();
+            var companyAndUsersId = new SortedDictionary<string, List<string>>();
+
+            while (input[0]!="End")
+            {
+                if (!companyAndUsersId.ContainsKey(input[0]))
+                {
+                    companyAndUsersId.Add(input[0], new List<string>());
+                    companyAndUsersId[input[0]].Add(input[1]);
+                }
+                else
+                {
+                    if (!companyAndUsersId[input[0]].Contains(input[1]))
+                    {
+                        companyAndUsersId[input[0]].Add(input[1]);
+                    }
+                }
+                input = Console.ReadLine().Split(new[] { " -> " }, StringSplitOptions.None).ToArray();
+
+            }
+            foreach (var company in companyAndUsersId)
+            {
+                Console.WriteLine($"{company.Key}");
+                for (int i = 0; i < company.Value.Count; i++)
+                {
+                    Console.WriteLine($"-- {company.Value[i]}");
+                }
+            }
+        }
+    }
+}
