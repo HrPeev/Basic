@@ -1,0 +1,170 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Judge
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] input = Console.ReadLine().Split(new[] { " -> " }, StringSplitOptions.RemoveEmptyEntries).ToArray();
+            var contestUserAndPoint = new SortedDictionary<string, Dictionary<string, int>>();
+            var contestCounter = new Dictionary<string, int>();
+            while (input[0]!="no more time")
+            {
+                if (!contestCounter.ContainsKey(input[1]))
+                {
+                    contestCounter.Add(input[1], 0);
+                }
+                
+                if (!contestUserAndPoint.ContainsKey(input[0]))
+                {
+                    contestUserAndPoint.Add(input[0], new Dictionary<string, int>());
+                    contestUserAndPoint[input[0]].Add(input[1], int.Parse(input[2]));
+                }
+                else
+                {
+                    if (!contestUserAndPoint[input[0]].ContainsKey(input[1]))
+                    {
+                        contestUserAndPoint[input[0]].Add(input[1], int.Parse(input[2]));
+                        
+                    }
+                    else
+                    {
+                        if (contestUserAndPoint[input[0]][input[1]]<int.Parse(input[2]))
+                        {
+                            contestUserAndPoint[input[0]][input[1]] = int.Parse(input[2]);
+                        }
+                    }
+                }
+                input = Console.ReadLine().Split(new[] { " -> " }, StringSplitOptions.RemoveEmptyEntries).ToArray();
+            }            
+            //foreach (var name in contestUserAndPoint)
+            //{
+            //    Console.WriteLine(name.Key);
+                
+            //    foreach (var item in name.Value)
+            //    {
+            //        Console.WriteLine(item.Key);                
+
+            //    }
+            //}
+
+            foreach (var contest in contestCounter)
+            {
+                int counter = 0;
+                foreach (var name in contestUserAndPoint.OrderByDescending(x => x.Value.Max(y => y.Value)))
+                {
+                    if (name.Value.ContainsKey(contest.Key))
+                    {
+                        counter++;
+                        
+                    }
+
+                }
+                
+                Console.WriteLine(contest.Key+": "+counter+" participants");
+                int curentCount = 1;
+                foreach (var name in contestUserAndPoint.OrderByDescending(x=>x.Value.Max(y=>y.Value)))
+                {
+                    
+                    if (name.Value.ContainsKey(contest.Key))
+                    {
+                        
+                        Console.WriteLine($"{curentCount}. {name.Key} <::> {contestUserAndPoint[name.Key][contest.Key]}");
+                        curentCount++;
+                    }
+                    
+                }
+                
+            }
+            int counter1 = 1;
+            Console.WriteLine("Individual standings:");
+            foreach (var name in contestUserAndPoint.OrderByDescending(x=>x.Value.Sum(y=>y.Value)))
+            {
+
+                Console.WriteLine($"{counter1}. {name.Key} -> {contestUserAndPoint[name.Key].Sum(x=>x.Value)}");
+                counter1++;
+            }
+
+        }
+        //{
+        //static void Main(string[] args)
+        //{
+        //    Dictionary<string, Dictionary<string, int>> userCoursePoints = new Dictionary<string, Dictionary<string, int>>();
+        //    Dictionary<string, Dictionary<string, int>> courseUserPoints = new Dictionary<string, Dictionary<string, int>>();
+        //    string command = Console.ReadLine();
+        //    while (command != "no more time")
+        //    {
+        //        string[] input = command.Split(" -> ").ToArray();
+        //        string course = input[1];
+        //        string user = input[0];
+        //        int points = int.Parse(input[2]);
+
+        //        //check if such contest already exists
+        //        if (!courseUserPoints.ContainsKey(course))
+        //        {
+        //            courseUserPoints.Add(course, new Dictionary<string, int>());
+        //        }
+        //        //if user not exist
+        //        if (!courseUserPoints[course].ContainsKey(user))
+        //        {
+        //            courseUserPoints[course][user] = 0;
+        //        }
+        //        // if he is taking the higher score
+        //        if (courseUserPoints[course][user] < points)
+        //        {
+        //            courseUserPoints[course][user] = points;
+        //        }
+
+        //        //Add course to user
+        //        if (!userCoursePoints.ContainsKey(user))
+        //        {
+        //            userCoursePoints.Add(user, new Dictionary<string, int>());
+        //        }
+        //        //if course not exist
+        //        if (!userCoursePoints[user].ContainsKey(course))
+        //        {
+        //            userCoursePoints[user][course] = 0;
+        //        }
+        //        // if he is taking the higher score
+        //        if (userCoursePoints[user][course] < points)
+        //        {
+        //            userCoursePoints[user][course] = points;
+        //        }
+
+        //        command = Console.ReadLine();
+        //    }
+
+        //    List<string> result = new List<string>();
+        //    foreach (var kvp in courseUserPoints)
+        //    {
+        //        result.Add($"{kvp.Key}: {kvp.Value.Count()} participants");
+        //        int counter = 0;
+
+        //        var sortedCourses = kvp.Value.OrderByDescending(x => x.Value).ThenBy(u => u.Key);
+        //        foreach (var item in sortedCourses)
+        //        {
+        //            counter++;
+        //            result.Add($"{counter}. {item.Key} <::> {item.Value}");
+        //        }
+
+        //    }
+        //    result.Add("Individual standings:");
+        //    int count = 0;
+
+        //    var sortedUsers = userCoursePoints.OrderByDescending(x => x.Value.Values.Sum()).ThenBy(x => x.Key);
+        //    foreach (var kvp in sortedUsers)
+        //    {
+        //        count++;
+        //        result.Add($"{count}. {kvp.Key} -> {kvp.Value.Values.Sum()}");
+        //    }
+        //    //Join by new line - Environment.NewLine or "\n"
+        //    Console.WriteLine(string.Join(Environment.NewLine, result));
+        //}
+    }
+}
+
