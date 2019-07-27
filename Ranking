@@ -1,0 +1,168 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Ranking
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] contestInput = Console.ReadLine().Split(':').ToArray();
+            //var test = new Dictionary<string, Dictionary<string, int>>();
+            //var program = new Dictionary<string, int>();
+            //test.Add("Tania", program);
+            //test["Tania"].Add("Java", 200);
+            ////yourDictionary[outerKey][innerKey] += newValue;
+            //test["Tania"]["Java"]+=100;
+            //foreach (var kvp in test)
+            //{
+            //    Console.WriteLine(kvp.Key);
+            //    foreach (var item in kvp.Value)
+            //    {
+            //        Console.WriteLine($"#{item.Key} -> {item.Value}");
+            //    }
+            //}
+            var contestAndPasswords = new Dictionary<string, string>();
+            while (contestInput[0]!= "end of contests")
+            {
+                contestAndPasswords.Add(contestInput[0], contestInput[1]);
+                contestInput = Console.ReadLine().Split(':').ToArray();
+            }
+
+            string[] inputCandidateAndPoints = Console.ReadLine().Split(new[] { "=>" }, StringSplitOptions.None).ToArray();
+            var studentsAndPoints = new Dictionary<string, Dictionary<string, int>>();
+            while (inputCandidateAndPoints[0]!= "end of submissions")
+            {
+                if (contestAndPasswords.ContainsKey(inputCandidateAndPoints[0])
+                    &&contestAndPasswords.ContainsValue(inputCandidateAndPoints[1]))
+                {
+                    if (studentsAndPoints.ContainsKey(inputCandidateAndPoints[2]))
+                    {
+                        if (studentsAndPoints[inputCandidateAndPoints[2]].ContainsKey(inputCandidateAndPoints[0]))
+                        {
+                            if (studentsAndPoints[inputCandidateAndPoints[2]][inputCandidateAndPoints[0]]
+                                < int.Parse(inputCandidateAndPoints[3]))
+                            {
+                                studentsAndPoints[inputCandidateAndPoints[2]][inputCandidateAndPoints[0]] = int.Parse(inputCandidateAndPoints[3]);
+                            }
+                        }
+                        else
+                        {
+                            studentsAndPoints[inputCandidateAndPoints[2]]
+                            .Add(inputCandidateAndPoints[0], int.Parse(inputCandidateAndPoints[3]));
+                        } 
+                    }
+                    else
+                    {
+                        studentsAndPoints.Add(inputCandidateAndPoints[2], new Dictionary<string, int>());
+                        studentsAndPoints[inputCandidateAndPoints[2]]
+                            .Add(inputCandidateAndPoints[0], int.Parse(inputCandidateAndPoints[3]));
+                    }
+                    
+
+                }
+                inputCandidateAndPoints = Console.ReadLine().Split(new[] { "=>" }, StringSplitOptions.None).ToArray();
+            }
+           // var result = studentsAndPoints.Values.Max(x=>x.Values.Sum());
+            //var result = studentsAndPoints.Select(x => new { key = x.Key, sum = x.Value.Select(y => y.Value).Sum() }).ToList();
+            //var results = temp.Select(x => new { key = x.Key, sum = x.Value.Select(y => y.Value).Sum() }).ToList();
+            var result = studentsAndPoints.Select(x => new { x.Key, sum = x.Value.Select(y => y.Value).Sum() }).ToList();
+            int bestResult = 0;
+            string bestName = string.Empty;
+            for (int i = 0; i < result.Count(); i++)
+            {
+                if (result[i].sum>bestResult)
+                {
+                    bestResult = result[i].sum;
+                    bestName = result[i].Key;
+                }
+            }
+            Console.WriteLine($"Best candidate is {bestName} with total {bestResult} points.");
+            Console.WriteLine("Ranking: ");
+            foreach (var name in studentsAndPoints.OrderBy(x=>x.Key))
+            {
+                Console.WriteLine(name.Key);
+                foreach (var contest in name.Value.OrderByDescending(x=>x.Value))
+                {
+                    Console.WriteLine($"#  {contest.Key} -> {contest.Value}");
+                    
+                }
+            }
+        }
+//        {
+//            string firstLine = Console.ReadLine();
+//        Dictionary<string, string> contestPasswords = new Dictionary<string, string>();
+ 
+//            while (firstLine != "end of contests")
+//            {
+//                string[] tokens = firstLine.Split(':');
+//        string contest = tokens[0];
+//        string passwordForContest = tokens[1];
+//        contestPasswords.Add(contest, passwordForContest);
+//                firstLine = Console.ReadLine();
+//            }
+
+//    string secondLine = Console.ReadLine();
+//    SortedDictionary<string, Dictionary<string, int>> submissions = new SortedDictionary<string, Dictionary<string, int>>();
+ 
+//            while (secondLine != "end of submissions")
+//            {
+//                string[] tokens = secondLine.Split("=>");
+//    string contest = tokens[0];
+//    string password = tokens[1];
+//    string username = tokens[2];
+//    int points = int.Parse(tokens[3]);
+ 
+//                if (!contestPasswords.ContainsKey(contest)
+//                    || contestPasswords[contest] != password)
+//                {
+//                    secondLine = Console.ReadLine();
+//                    continue;
+//                }
+ 
+//                if (!submissions.ContainsKey(username))
+//                {
+//                        submissions[username] = new Dictionary<string, int> { { contest, points } };
+//                }
+ 
+//                if (!submissions[username].ContainsKey(contest))
+//                {
+//                    submissions[username].Add(contest, points);
+//                }
+ 
+//                if (submissions[username][contest] < points)
+//                {
+//                    submissions[username][contest] = points;
+//                }
+ 
+//                secondLine = Console.ReadLine();
+//            }
+ 
+//            Dictionary<string, int> usernameTotalPoints = new Dictionary<string, int>();
+//            foreach (var kvp in submissions)
+//            {
+//                usernameTotalPoints[kvp.Key] = kvp.Value.Values.Sum();
+//            }
+//            string bestCandidate = usernameTotalPoints
+//                .Keys
+//                .Max();
+//int bestPoints = usernameTotalPoints
+//    .Values
+//    .Max();
+
+//Console.WriteLine($"Best candidate is {bestCandidate} with total {bestPoints} points.");
+ 
+//            Console.WriteLine("Ranking:");
+//            foreach (var kvp in submissions)
+//            {
+//                Console.WriteLine(kvp.Key);
+//                Console.WriteLine(string.Join(Environment.NewLine, kvp.Value
+//                    .OrderByDescending(x => x.Value)
+//                    .Select(a => $"#  {a.Key} -> {a.Value}")
+//                    ));
+//            } 
+    }
+}
