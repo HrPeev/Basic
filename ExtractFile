@@ -1,0 +1,21 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Text_ExtractFile
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] input = Console.ReadLine().Split('\\');
+            string []file = input[input.Length - 1].Split('.');
+            Console.WriteLine($"File name: {file[0]}");
+            Console.WriteLine($"File extension: {file[1]}");
+
+            
+        }
+    }
+}
