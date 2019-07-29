@@ -1,0 +1,29 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Text_EncriptText
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input = Console.ReadLine();
+            char []rawText = input.ToCharArray();
+            int[] finalText = new int[rawText.Length];
+            for (int i = 0; i < rawText.Length; i++)
+            {
+                finalText[i] = (int)(rawText[i]) + 3;
+                
+            }
+            foreach (var c in finalText)
+            {
+                Console.Write((char)c);
+            }
+            Console.WriteLine();
+
+        }
+    }
+}
