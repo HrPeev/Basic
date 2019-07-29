@@ -1,0 +1,63 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Text_CharacterMultiplier
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] input = Console.ReadLine().Split(' ').ToArray();
+            char[] arrFirst = input[0].ToCharArray();
+            char[] arrSecond = input[1].ToCharArray();
+            int[] firstNumbers = new int[arrFirst.Length];
+            int[] secondNumbers = new int[arrSecond.Length];
+            int sum = 0;
+            for (int i = 0; i < arrFirst.Length; i++)
+            {
+                firstNumbers[i] = (int)arrFirst[i];
+            }
+
+            for (int i = 0; i < arrSecond.Length; i++)
+            {
+                secondNumbers[i] = (int)arrSecond[i];
+            }
+            if (firstNumbers.Length>secondNumbers.Length)
+            {
+                for (int i = 0; i < secondNumbers.Length; i++)
+                {
+                    sum += (secondNumbers[i] * firstNumbers[i]);
+                }
+                for (int i = secondNumbers.Length; i < firstNumbers.Length; i++)
+                {
+                    sum += firstNumbers[i];
+                }
+                Console.WriteLine(sum);
+            }
+            else if (firstNumbers.Length==secondNumbers.Length)
+            {
+                for (int i = 0; i < secondNumbers.Length; i++)
+                {
+                    sum += (secondNumbers[i] * firstNumbers[i]);
+                }
+                Console.WriteLine(sum);
+            }
+            else if (secondNumbers.Length>firstNumbers.Length)
+            {
+                for (int i = 0; i < firstNumbers.Length; i++)
+                {
+                    sum += (secondNumbers[i] * firstNumbers[i]);
+                }
+                for (int i = firstNumbers.Length; i < secondNumbers.Length; i++)
+                {
+                    sum += secondNumbers[i];
+                }
+                Console.WriteLine(sum);
+            }
+
+        }
+    }
+}
